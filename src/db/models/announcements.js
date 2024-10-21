@@ -31,7 +31,7 @@ const announcementsSchema = new Schema(
   }
 );
 
-export const announcementsCollection = model(
+export const AnnouncementsCollection = model(
   'announcements',
   announcementsSchema
 );

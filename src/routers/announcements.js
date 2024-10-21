@@ -10,19 +10,19 @@ const router = Router();
 router.get('/', ctrlWrapper(controllers.getAnnouncementsController));
 
 router.get(
-  '/announcements/:announcementsId',
+  '/:announcementId',
   isValidId,
   ctrlWrapper(controllers.getAnnouncementByIdController)
 );
 
 router.delete(
-  '/:announcementsId',
+  '/:announcementId',
   isValidId,
   ctrlWrapper(controllers.deleteAnnouncementController)
 );
 
 router.post(
-  '/register',
+  '/',
   validateBody(validations.createAnnouncementSchema),
   ctrlWrapper(controllers.createAnnouncementController)
 );

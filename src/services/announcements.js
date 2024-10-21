@@ -1,4 +1,4 @@
-import { AnnouncementsCollection } from '../db/models/announcement.js';
+import { AnnouncementsCollection } from '../db/models/announcements.js';
 import { calculatePaginationData } from '../utils/calculatePaginationData.js';
 
 export const getAllAnnouncements = async ({ page = 1, perPage = 10 }) => {
@@ -27,23 +27,27 @@ export const getAnnouncementById = async announcementId => {
   return announcement;
 };
 
-export const createStudent = async payload => {
+export const createAnnouncement = async payload => {
   console.log(payload);
 
-  const student = await StudentsCollection.create(payload);
-  return student;
+  const announcement = await AnnouncementsCollection.create(payload);
+  return announcement;
 };
 
-export const deleteStudent = async studentId => {
-  const student = await StudentsCollection.findOneAndDelete({
-    _id: studentId,
+export const deleteAnnouncement = async announcementId => {
+  const announcement = await AnnouncementsCollection.findOneAndDelete({
+    _id: announcementId,
   });
-  return student;
+  return announcement;
 };
 
-export const updateStudent = async (studentId, payload, options = {}) => {
-  const rawResult = await StudentsCollection.findOneAndUpdate(
-    { _id: studentId },
+export const updateAnnouncement = async (
+  announcementId,
+  payload,
+  options = {}
+) => {
+  const rawResult = await AnnouncementsCollection.findOneAndUpdate(
+    { _id: announcementId },
     payload,
     { new: true, includeResultMetadata: true, ...options }
   );
@@ -51,7 +55,7 @@ export const updateStudent = async (studentId, payload, options = {}) => {
   if (!rawResult || !rawResult.value) return null;
 
   return {
-    student: rawResult.value,
+    announcement: rawResult.value,
     isNew: Boolean(rawResult?.lastErrorObject?.upserted),
   };
 };

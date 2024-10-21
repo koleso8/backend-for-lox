@@ -7,7 +7,7 @@ export const createAnnouncementSchema = Joi.object({
     'string.max': 'Username should have at most {#limit} characters',
     'any.required': 'Username is required',
   }),
-  price: Joi.number().integer().min(6).max(16).required(),
+  price: Joi.number().integer().required(),
   type: Joi.string().valid('client', 'lawyer').required(),
   title: Joi.string().required(),
   comment: Joi.string().required(),

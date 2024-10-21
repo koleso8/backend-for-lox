@@ -16,13 +16,13 @@ export const startServer = () => {
   app.use(express.json());
   app.use(cors());
 
-  // app.use(
-  //   pinoHttp({
-  //     transport: {
-  //       target: 'pino-pretty',
-  //     },
-  //   })
-  // );
+  app.use(
+    pinoHttp({
+      transport: {
+        target: 'pino-pretty',
+      },
+    })
+  );
 
   app.get('/', (req, res) => {
     res.json({

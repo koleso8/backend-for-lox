@@ -1,22 +1,13 @@
 import * as services from '../services/announcements.js';
 import createHttpError from 'http-errors';
 import { parsePaginationParams } from '../utils/parsePaginationParams.js';
-import { parseSortParams } from '../utils/parseSortParams.js';
-import { parseFilterParams } from '../utils/parseFilterParams.js';
 
 export const getAnnouncementsController = async (req, res) => {
   const { page, perPage } = parsePaginationParams(req.query);
 
-  const { sortBy, sortOrder } = parseSortParams(req.query);
-
-  const filter = parseFilterParams(req.query);
-
   const announcements = await services.getAllAnnouncements({
     page,
     perPage,
-    sortBy,
-    sortOrder,
-    filter,
   });
   res.status(200).json({ data: announcements });
 };
