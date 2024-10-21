@@ -1,29 +1,28 @@
 import { model, Schema } from 'mongoose';
 
-const studentsSchema = new Schema(
+const announcementsSchema = new Schema(
   {
-    name: {
+    author: {
       type: String,
       required: true,
     },
-    age: {
+    price: {
       type: Number,
-
       required: true,
+      default: 400,
     },
-    gender: {
+    type: {
       type: String,
       required: true,
-      enum: ['male', 'female', 'other'],
+      enum: ['lawyer', 'client'],
     },
-    avgMark: {
-      type: Number,
+    comment: {
+      type: String,
       required: true,
     },
-    onDuty: {
-      type: Boolean,
+    tel: {
+      type: String,
       required: true,
-      default: false,
     },
   },
   {
@@ -32,4 +31,7 @@ const studentsSchema = new Schema(
   }
 );
 
-export const StudentsCollection = model('students', studentsSchema);
+export const announcementsCollection = model(
+  'announcements',
+  announcementsSchema
+);
