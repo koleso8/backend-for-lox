@@ -5,6 +5,12 @@ const usersSchema = new Schema(
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
+    city: { type: String },
+    exp: { type: Number },
+    stream: { type: String },
+    tel: { type: String, required: true },
+    type: { type: String, required: true, enum: ['client', 'lawyer'] },
+    announcements: { type: Array },
   },
   { timestamps: true, versionKey: false }
 );

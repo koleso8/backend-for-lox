@@ -9,6 +9,7 @@ export const registerUserSchema = Joi.object({
   type: Joi.string().valid('client', 'lawyer'),
   email: Joi.string().email().required(),
   password: Joi.string().required(),
+  announcements: Joi.array().items(Joi.object()),
 });
 
 export const loginUserSchema = Joi.object({
