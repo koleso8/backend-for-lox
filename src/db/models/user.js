@@ -10,7 +10,7 @@ const usersSchema = new Schema(
     stream: { type: String },
     tel: { type: String, required: true },
     type: { type: String, required: true, enum: ['client', 'lawyer'] },
-    announcements: { type: Array },
+    announcements: { type: Array, default: [] },
   },
   { timestamps: true, versionKey: false }
 );
